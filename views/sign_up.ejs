@@ -128,30 +128,43 @@ button{
 }
 
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
 </head>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
-        <h3>Sign Up</h3>
-
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
-
+    <form method="POST" action="/signup?type=<%= userType %>">
+        <h3><%= userType === 'teacher' ? 'Teacher Sign up' : 'Student Sign up' %></h3>
+    
+        <label for="name">Name</label>
+        <input type="text" placeholder="Name" name="name" id="name"> <!-- Added name attribute -->
+    
         <label for="email">Email</label>
-        <input type="email" placeholder="Email" id="email">
-
+        <input type="email" placeholder="Email" name="email" id="email"> <!-- Added name attribute -->
+    
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-        <button>Log In</button>
+        <input type="password" placeholder="Password" name="password" id="password"> <!-- Added name attribute -->
+    
+        <button type="submit" onclick="showSuccessAlert()">Sign Up</button>
         
         <div class="social">
-          <div class="go"><i class="fab fa-google"></i> Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
+        
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script>
+        // Function to show a success alert
+        function showSuccessAlert() {
+            Swal.fire('Success!', 'Your data has been saved successfully', 'success')
+          
+        }
+    </script>
 </body>
 </html>
